@@ -16,15 +16,18 @@ console.log('d3', d3);
                 return a.dept > b.dept ? 1 : -1;
             });
         console.log('data3', data3);
-        const bars = d3.select('.histo').selectAll('.dept').data(data3);
-        bars.enter()
+        const dept = d3.select('.histo').selectAll('.dept').data(data3);
+        dept.enter()
             .append('div')
             .classed('dept', true)
             .html(d => `
 <span class="dept-num">${d.dept}</span>
-<div class="bar" style="width: ${(100 * d['nbr-accident'] / 7000)}%;"></div>
+<div class="bar" style="width: 0%;"></div>
 <span class="nbr-accident">${d['nbr-accident']}</span>`);
-    
+
+        const bars = d3.select('.histo').selectAll('.bar').data(data3);
+        bars.transition().delay(1000).duration(2000).style('width', d => `${(100 * d['nbr-accident'] / 7000)}%`);
+
 
     } catch (error) {
         console.error('error', error);
