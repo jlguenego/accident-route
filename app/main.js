@@ -1,8 +1,8 @@
-console.log('hello', d3);
+console.log('d3', d3);
 
 (async () => {
     try {
-        const data = await d3.csv('data/caracteristiques-2017.csv')
+        const data = await d3.csv('data/caracteristiques-2017.csv');
         console.log('data', data);
         const data2 = data.map(d => d['dep'].replace(/^(.*)0$/, '$1'))
             .reduce((acc, dep) => {
@@ -20,11 +20,14 @@ console.log('hello', d3);
         bars.enter()
             .append('div')
             .classed('dept', true)
-            .html(d => `<span class="dept-num">${d.dept}</span><div class="bar" style="width: ${(100 * d['nbr-accident'] / 6000)}%;"></div>`);
-
+            .html(d => `
+<span class="dept-num">${d.dept}</span>
+<div class="bar" style="width: ${(100 * d['nbr-accident'] / 7000)}%;"></div>
+<span class="nbr-accident">${d['nbr-accident']}</span>`);
+    
 
     } catch (error) {
-        console.log('error', error);
+        console.error('error', error);
     }
     console.log('coucou');
 })();
