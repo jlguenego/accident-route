@@ -1,9 +1,11 @@
 console.log('hello', d3);
 
-d3.csv('data.csv')
-    .then(function (data) {
+(async () => {
+    try {
+        const data = await d3.csv('data.csv')
         console.log('data', data);
-    })
-    .catch(function (error) {
+    } catch (error) {
         console.log('error', error);
-    })
+    }
+    console.log('coucou');
+})();
