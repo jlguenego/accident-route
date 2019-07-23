@@ -2,14 +2,23 @@
     display: flex;
     flex-flow: column;
     width: 100%;
-    height: 20em;
+    min-height: 20em;
     background-color: #eee;
     padding: 0.5em;
+}
+
+.dept {
+    display: flex;
+    height: 1em;
+    margin: 0.2em 0;
+}
+
+.dept-num {
+    width: 2em;
 }
 
 .bar {
     width: 0;
     height: 1em;
-    margin: 0.5em 0;
     background-color: red;
 }

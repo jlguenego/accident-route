@@ -11,15 +11,18 @@ console.log('hello', d3);
             }, {});
         console.log('data2', data2);
         const data3 = Object.keys(data2)
-        .map(key => ({dept: key, 'nbr-accident': data2[key]}))
-        .sort((a, b) => {
-            return a.dept > b.dept ? 1 : -1;
-        });
+            .map(key => ({ dept: key, 'nbr-accident': data2[key] }))
+            .sort((a, b) => {
+                return a.dept > b.dept ? 1 : -1;
+            });
         console.log('data3', data3);
-        // const bars = document.querySelectorAll('.bar');
-        // bars.forEach((bar, i) => {
-        //     bar.style.width = `${100 * data[i]['nbr-accident']/5000}%`;
-        // });
+        const bars = d3.select('.histo').selectAll('.dept').data(data3);
+        bars.enter()
+            .append('div')
+            .classed('dept', true)
+            .html(d => `<span class="dept-num">${d.dept}</span><div class="bar" style="width: ${(100 * d['nbr-accident'] / 6000)}%;"></div>`);
+
+
     } catch (error) {
         console.log('error', error);
     }
