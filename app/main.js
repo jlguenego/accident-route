@@ -22,14 +22,14 @@ console.log('d3', d3);
             .classed('dept', true)
             .html(d => `
 <span class="dept-num">${d.dept}</span>
-<div class="bar" style="width: 0%; background-color: hsl(0, 100%, 80%)"></div>
-<span class="nbr-accident">${d['nbr-accident']}</span>`);
+<div class="bar" style="width: 0%; background-color: hsl(0, 100%, 80%)" title="${d['nbr-accident']}"></div>
+`);
 
         const bars = d3.select('.histo').selectAll('.bar').data(data3);
         bars.transition().delay(1000).duration(2000)
             .style('width', d => `${(100 * d['nbr-accident'] / 7000)}%`)
             .transition(1000).delay(1000).duration(2000)
-            .style('background-color', 'hsl(0, 100%, 60%)');
+            .style('background-color', 'hsl(0, 100%, 40%)');
 
 
     } catch (error) {
