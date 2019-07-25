@@ -1,4 +1,4 @@
-// show d3
+// show d3 nicely
 console.log('d3', d3);
 
 (async () => {
